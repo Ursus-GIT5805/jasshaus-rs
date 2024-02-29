@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jasshaus | Game</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    </head>
+
+    <body>
+        <a style="display: none;" id="player0"></a>
+        <a style="display: none;" id="star0"></a>
+        <div style="display: none;" id="symbols0"></div>
+        <!--<audio id="audio0" style="display: none;" autoplay></audio>
+        <audio id="audio1" style="display: none;" autoplay></audio>
+        <audio id="audio2" style="display: none;" autoplay></audio>
+        <audio id="audio3" style="display: none;" autoplay></audio>-->
+
+        <img src="img/background.jpg" id="background">
+        <div id="carpet">
+            <img class="Playedcard CenterX" src="./img/de/08.png" style="bottom: 0;" id="played_card0">
+            <img class="Playedcard CenterY" src="./img/de/08.png" style="right: 0;" id="played_card1">
+            <img class="Playedcard CenterX" src="./img/de/08.png" style="top: 0;" id="played_card2">
+            <img class="Playedcard CenterY" src="./img/de/08.png" style="left: 0;" id="played_card3">
+        </div>
+
+        <div id="roundDetails">
+            <div id=namePT>Misere Slalom Obenabe</div>
+            <div id="roundSymbols">
+                <img src="./img/playtype/misere.png" id="round_misery"/>
+                <img src="./img/playtype/slalomdown.png" id="round_playtype"/>
+                <div id="roundSymbolsVertical">
+                    <img src="./img/playtype/downup.png" id="round_ruletype"/>
+                    <img src="./img/playtype/pass.png" id="round_pass"/>
+                </div>
+            </div>
+        </div>
+        <div id="gameDetails">
+            <a><u>Schieber 1000</u></a><br>
+
+            <a id="tName0">???</a> + <a id="tName2">???</a>:
+            <a id="points0">0</a> + <a id="gp0">0</a><br>
+
+            <a id="tName1">???</a> + <a id="tName3">???</a>:
+            <a id="points1">0</a> + <a id="gp1">0</a><br>
+        </div>
+
+        <div class="Player CenterY" style="right: 2px;">
+            <a id="player1" class="PlayerName">0123456789ABCDEF</a>
+            <!--<div class="PlayerMSG" style="bottom: 100%; right: 0;"></div>-->
+
+            <div class="Shows">
+                <div class="Show">
+                    <img src="./img/de/32.png"><img src="./img/de/33.png"><img src="./img/de/34.png">
+                </div>
+                <div class="Show">
+                    <img src="./img/de/14.png"><img src="./img/de/15.png"><img src="./img/de/16.png">
+                </div>
+                <div class="Show">
+                    <img src="./img/de/00.png"><img src="./img/de/01.png"><img src="./img/de/02.png">
+                </div>
+            </div>
+        </div>
+
+
+        <div id="showbar">
+            <div>Abbrechen</div>
+            <div>Weisen</div>
+        </div>
+        <div id="hand">
+            <img src="./img/de/10.png">
+            <img src="./img/de/01.png">
+            <img src="./img/de/02.png">
+            <img src="./img/de/03.png">
+            <img src="./img/de/24.png">
+            <img src="./img/de/05.png">
+            <img src="./img/de/06.png">
+            <img src="./img/de/27.png">
+            <img src="./img/de/08.png">
+        </div>
+
+        <!--
+        <div class="Player" style="left: 50%; top: 2px; transform: translateX(-50%)">
+            <a id="player2" class="PlayerName"></a>
+            <img id="star2" class="Playerstar" style="right: 100%;" src="img/star.svg">
+            <div id="symbols2"></div>
+            <div class="PlrDropdown">
+                <div><input type="checkbox" id="mute2" style="position: relative; height: 1.5rem;"> Stumm</div>
+                <div id="volumectrl2">
+                    <img src="img/volume.svg" style="width: 1rem;">
+                    <input type="range" id="volume2" min="0" max="64" value="32" style="width: calc(100% - 3rem);">
+                </div>
+            </div>
+        </div>
+        <div class="Player" style="left: 2px; top: 50%; transform: translateY(-50%)">
+            <a id="player3" class="PlayerName"></a>
+            <img id="star3" class="Playerstar" style="left: 100%;" src="img/star.svg">
+            <div id="symbols3"></div>
+            <div class="PlrDropdown">
+                <div><input type="checkbox" id="mute3" style="position: relative; height: 1.5rem;"> Stumm</div>
+                <div id="volumectrl3">
+                    <img src="img/volume.svg" style="width: 1rem;">
+                    <input type="range" id="volume3" min="0" max="64" value="32" style="width: calc(100% - 3rem);">
+                </div>
+            </div>
+        </div>-->
+
+        <!--<div id="announceWindow">
+            <h1>Sage an!</h1>
+            <div id="playtypeBoard">
+                <div class="PTRow">
+                    <div class="AnnounceButton"><img id="PT6" src="./img/playtype/slalomup.png"/><p>Slalom Obenabe</p></div>
+                    <div class="AnnounceButton"><img id="PT0" src="./img/playtype/updown.png"/><p>Obenabe</p></div>
+                    <div class="AnnounceButton"><img id="PT1" src="./img/playtype/downup.png"/><p>Undeufe</p></div>
+                    <div class="AnnounceButton"><img id="PT7" src="./img/playtype/slalomdown.png"/><p>Slalom Undeufe</p></div>
+                </div>
+                <div class="PTRow">
+                    <div class="AnnounceButton"><img id="PT2" src="./img/playtype/trumpfshield.png"/><p id="PTT2">Schilten</p></div>
+                    <div class="AnnounceButton"><img id="PT3" src="./img/playtype/trumpfacorn.png"/><p id="PTT3">Eicheln</p></div>
+                    <div class="AnnounceButton"><img id="PT4" src="./img/playtype/trumpfrose.png"/><p id="PTT4">Rosen</p></div>
+                    <div class="AnnounceButton"><img id="PT5" src="./img/playtype/trumpfbell.png"/><p id="PTT5">Schellen</p></div>
+                </div>
+                <div class="PTRow">
+                    <div class="AnnounceButton"><img src="./img/playtype/misere.png"/><p>Misère</p></div>
+                    <div class="AnnounceButton"><img id="PT8" src="./img/playtype/guschti.png"/><p>Guschti</p></div>
+                    <div class="AnnounceButton"><img id="PT9" src="./img/playtype/mary.png"/><p>Mary</p></div>
+                    <div class="AnnounceButton"><img src="./img/playtype/pass.png"/><p>Schieben</p></div>
+                </div>
+            </div>
+        </div>-->
+
+        <div id="roundSummary">
+            <div class="SummaryTeam">
+                <div>
+                    <div style="font-size: 2rem; white-space: nowrap;">
+                        <span class="Summaryname">
+                            <a>Ursus</a>
+                            <div class="Playercards" id="hand0"></div>
+                        </span> &
+                        <span class="Summaryname">
+                            <a>Blub</a>
+                            <div class="Playercards" id="hand2"></div>
+                        </span>
+                    </div>
+                    <div>
+                        Beginn<br>Weis<br>Stich<br>--------<br>
+                        <a style="font-size: 1.5rem;">Endstand</a>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 2rem; white-space: nowrap;"><br></div>
+                    <a id="prePoints0">111</a><br>+
+                    <a id="shwPoints0">111</a><br>+
+                    <a id="gotPoints0">111</a><br>--------<br>
+                    <a id="finPoints0" style="font-size: 1.5rem;">333</a>
+                </div>
+                <div style="width: 2rem;"></div>
+                <div class="SummaryCards">
+                    <div class="SummaryCardsColumn" style="background-color: red;">
+                        <img src="./img/de/00.png"/>
+                        <img src="./img/de/10.png"/>
+                        <img src="./img/de/20.png"/>
+                        <img src="./img/de/30.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: blue;">
+                        <img src="./img/de/01.png"/>
+                        <img src="./img/de/11.png"/>
+                        <img src="./img/de/21.png"/>
+                        <img src="./img/de/31.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: red;">
+                        <img src="./img/de/02.png"/>
+                        <img src="./img/de/12.png"/>
+                        <img src="./img/de/22.png"/>
+                        <img src="./img/de/32.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: blue;">
+                        <img src="./img/de/03.png"/>
+                        <img src="./img/de/13.png"/>
+                        <img src="./img/de/23.png"/>
+                        <img src="./img/de/33.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: red;">
+                        <img src="./img/de/04.png"/>
+                        <img src="./img/de/14.png"/>
+                        <img src="./img/de/24.png"/>
+                        <img src="./img/de/34.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: blue;">
+                        <img src="./img/de/05.png"/>
+                        <img src="./img/de/15.png"/>
+                        <img src="./img/de/25.png"/>
+                        <img src="./img/de/35.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: red;">
+                        <img src="./img/de/06.png"/>
+                        <img src="./img/de/16.png"/>
+                        <img src="./img/de/26.png"/>
+                        <img src="./img/de/36.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: blue;">
+                        <img src="./img/de/07.png"/>
+                        <img src="./img/de/17.png"/>
+                        <img src="./img/de/27.png"/>
+                        <img src="./img/de/37.png"/>
+                    </div>
+                    <div class="SummaryCardsColumn" style="background-color: red;">
+                        <img src="./img/de/08.png"/>
+                        <img src="./img/de/18.png"/>
+                        <img src="./img/de/28.png"/>
+                        <img src="./img/de/38.png"/>
+                    </div>
+                </div>
+            </div>
+            <div id="closeSummary">Weiter</div>
+        </div>
+
+        <!--<div id="endWindow">
+            <div style="font-size: 3rem; font-weight: bolder;">
+                Gewonnen
+            </div>
+            <div style="font-size: 2.5rem; padding: 1rem;">
+                Urs + Blu | 1 - 0 | ADD + BAA
+            </div>
+            <div id="endButtons">
+                <div class="endButton" style="left: 0;">Revanche (0/4)</div>
+                <div class="endButton" style="right: 0;">Spiel verlassen</div>
+            </div>
+        </div>
+        <!--
+        <div id="showWindow">
+            <a id="showTitle">Weisen?</a>
+            <div id="showCards"></div>
+            <div id="showConfirm" class="ShowButton" onclick="showConfirm()">Weisen</div>
+            <div id="showCancel" class="ShowButton" onclick="showCancel()">Schinden</div>
+        </div>-->
+        <!--<div id="teamWindow" class="CenterXY">
+            <h2>Wählen Sie ihren Wunschpartner</h2>
+            <div id="playerChoose">
+                <div id="choose0" class="TeamplayerButton CenterX" style="bottom: 0;">Zufällig</div>
+                <div id="choose1" class="TeamplayerButton CenterY" style="right: 0;"></div>
+                <div id="choose2" class="TeamplayerButton CenterX" style="top: 0;"></div>
+                <div id="choose3" class="TeamplayerButton CenterY" style="left: 0;"></div>
+            </div>
+        </div>-->
+        <!--<div id="startWindow">
+            <h1>Bitte warten Sie auf weitere Spieler...</h1>
+        </div>-->
+
+        <!--<div id="infoWindow">
+            <h1><u>Info</u></h1>
+            <a style="padding: 0.5rem;"></a>
+            <div id="infoButton">Okay</div>
+        </div>-->
+
+        <!--
+        <div class="PlayerMSG" id="msg0" style="bottom: 25%; left: 50%; transform: translateX(-50%);"></div>
+        <div class="PlayerMSG" id="msg1" style="right: 1%; top: 40%; transform: translateY(-50%);"></div>
+        <div class="PlayerMSG" id="msg2" style="top: 10%; left: 50%; transform: translateX(-50%);"></div>
+        <div class="PlayerMSG" id="msg3" style="left: 1%; top: 40%; transform: translateY(-50%);"></div>-->
+
+        <!--<img src="img/chat.svg" class="ActionButton" style="bottom: 0; right: 0;"/>
+        <img src="img/settings.svg" class="ActionButton" style="bottom: 0; left: 0;"/>-->
+
+        <div>
+            <img src="img/chat.svg" id="Chatbutton"/>
+            <div id="chatWindow">
+                <input type="input" placeholder="Eingabe" id="chatInput"/>
+                <div id="chatHistory"></div>
+                <img src="img/close.svg" id="closeChat">
+            </div>
+        </div>
+
+
+        <div id="settingWindow">
+            <h1><u>Einstellungen</u></h1>
+            <div id="settingbox"></div>
+            <div class="Settingbutton">Einstellungen speichern</div>
+            <div class="Settingbutton">Partie verlassen</div>
+        </div>
+    </body>
+
+    <link rel="stylesheet" href="./styles/game.css">
+    <link rel="stylesheet" href="./styles/window.css">
+</html>

@@ -1,0 +1,508 @@
+:root {
+    font-family: Roboto, sans-serif;
+    --card-aspect-ratio: 161 / 247;
+    --hand_height: 22.5vh;
+}
+
+body {
+    margin: 0%;
+    background-color: #000000;
+}
+
+.CenterX {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.CenterY {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.CenterXY {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+#cards {
+    position: absolute;
+}
+
+#carpet {
+    position: absolute;
+
+    inset: 50% 50%;
+    transform: translate(-50%, -50%);
+
+    height: 50%;
+    aspect-ratio: 1/1;
+
+    border-radius: 1rem;
+    border-style: solid;
+
+    border-color: #008100;
+    background-color: #00BB00;
+}
+
+.Playedcard {
+    position: absolute;
+
+    border: 0.25rem none #FFFF00;
+    border-radius: 0.6rem;
+    height: 40%;
+    aspect-ratio: var(--card-aspect-ratio);
+
+    user-select: none;
+    pointer-events: none;
+
+    animation-iteration-count: 1;
+    animation-duration: 500ms;
+}
+
+@keyframes CardPlay0 {
+    from { transform: translate(-50%, 300%); }
+    to { transform: translate(-50%, 0%); }
+}
+
+@keyframes CardPlay1 {
+    from { transform: translate(300%, -50%); }
+    to { transform: translate(0%, -50%); }
+}
+
+@keyframes CardPlay2 {
+    left: 50%;
+    from { transform: translate(-50%, -300%); }
+    to { transform: translate(-50%, 0); }
+}
+
+@keyframes CardPlay3 {
+    from { transform: translate(-300%, -50); }
+    to { transform: translate(0%, -50%); }
+}
+
+/*---*/
+
+#roundDetails {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    text-align: center;
+
+    padding: 0.5rem;
+
+    border-style: solid;
+    border-width: 0 0.5rem 0.5rem 0;
+    border-bottom-right-radius: 0.5rem;
+
+    color: #EEEEEE;
+    border-color: #DEA487;
+    background-color: #000000;
+}
+
+#roundSymbols {
+    height: 6rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#roundSymbols img {
+    height: 100%;
+}
+
+#roundSymbolsVertical {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#roundSymbolsVertical img {
+    height: 50%;
+}
+
+/*---*/
+
+#gameDetails {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+    padding: 0.8rem;
+
+    font-size: 1.8rem;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    border-style: solid;
+    border-bottom-left-radius: 0.5rem;
+    border-width: 0 0 0.5rem 0.5rem;
+
+    color: #EEEEEE;
+    border-color: #DEA487;
+    background-color: #000000;
+}
+
+/*---*/
+
+.PlayerContainer {
+    position: absolute;
+    display: flex;
+
+    max-width: 20rem;
+    overflow: hidden;
+}
+
+.Player {
+    min-width: 5rem;
+    width: min-content;
+    max-width: 15rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    border-radius: 0.25rem;
+    border: 0.125rem solid #000000;
+    padding: 0.25rem;
+
+    text-align: center;
+    cursor: pointer;
+
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+.PlayerName {
+    font-size: 2rem;
+}
+
+.Player:hover .PlayerDropdown {
+    display: block;
+}
+
+.PlayerDropdown {
+    display: none;
+
+    text-align: left;
+    font-size: 1.5rem;
+    max-height: 9rem;
+    overflow-y: scroll;
+
+    background-color: #000000;
+}
+
+.PlayerDropdown div:hover {
+    background-color: #222222;
+}
+
+/*---*/
+
+.PlayerMSG {
+    display: block;
+
+    width: 100%;
+
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+
+    text-align: left;
+    font-size: 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    box-sizing: border-box;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    color: #000000;
+    background-color: #CCCCCC;
+}
+
+/* Just to remind you, If the text is one consecutive word, it can be line-breaked */
+
+.PlayerMSG:hover {
+    max-height: 30vh;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    white-space: normal;
+    text-overflow: clip;
+
+    cursor: pointer;
+    background-color: #BBBBBB;
+}
+
+.Playerstar {
+    position: absolute;
+    visibility: hidden;
+    height: calc(100% - 0.5rem);
+}
+
+#showButton {
+    position: absolute;
+
+    left: 2px;
+    bottom: 25%;
+
+    font-size: 2rem;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+
+    background-color: #BBBBBB;
+}
+
+#showButton:hover {
+    background-color: #999999;
+}
+
+.Shows {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 30vw;
+    max-height: 25vh;
+
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+
+    box-sizing: border-box;
+
+    color: #000000;
+    background-color: #CCCCCC;
+}
+
+.Show {
+    display: flex;
+
+    height: 10vh;
+    padding: 0.1rem;
+
+    overflow-x: scroll;
+}
+
+.Show img {
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+#closeShows {
+    position: absolute;
+
+    right: 0;
+    bottom: 100%;
+
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+
+    padding: 0.5rem;
+
+    cursor: pointer;
+
+    color: #000000;
+    background-color: #CCCCCC;
+}
+
+#closeShows:hover {
+    background-color: #BBBBBB;
+}
+
+/*---*/
+
+.ActionButton {
+    position: absolute;
+
+    width: 0.8cm;
+    height: 0.8cm;
+
+    border: 0.1rem none #FFFFFF;
+    border-radius: 0.5rem;
+
+    margin: 0.05cm;
+    padding: 0.2cm;
+
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.ActionButton:hover {
+    background-color: #363636;
+}
+
+
+/*---*/
+
+#hand {
+    position: absolute;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    bottom: 0;
+    width: 100%;
+    height: var(--hand_height);
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+#hand img {
+    width: auto;
+    height: 100%;
+    --cardw: calc( var(--hand_height) * 161 / 247 );
+    margin-right: calc( min( 100vw / 9 - var(--cardw), 0px) );
+}
+
+/*---*/
+
+#showWindow {
+    position: absolute;
+    display: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    padding: 1rem;
+
+    border: 0.5rem solid #DEA487;
+    border-radius: 0.5rem;
+
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+#showCards {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 12rem;
+
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    overflow-x: scroll;
+
+    box-sizing: border-box;
+
+    background-color: #000033;
+}
+
+/*---*/
+
+#Chatbutton {
+    position: absolute;
+
+    bottom: 2px;
+    right: 2px;
+
+    height: 1cm;
+    max-height: 10%;
+
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+
+    background-color: #000000;
+}
+
+#Chatbutton:hover {
+    background-color: #222222;
+}
+
+#ChatWindow {
+    position: absolute;
+    display: flex;
+    flex-direction: column-reverse;
+
+    right: 0;
+    bottom: 0;
+    width: 20rem;
+    height: 40%;
+
+    padding: 0.25rem;
+    border: 0.25rem solid #AAAAAA;
+
+    color: #FFFFFF;
+    background-color: #00000088;
+}
+
+#chatInput {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-color: #AAAAAA;
+}
+
+/*---*/
+
+#votingWindow {
+    position: absolute;
+
+    top: 2px;
+    left: 2px;
+
+    text-align: center;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+#voteButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.VoteButton {
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    background-color: #DDDDDD;
+}
+.VoteButton:hover {
+    background-color: #BBBBBB;
+}
+
+.VoteButtonChosen {
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    background-color: #33CC33;
+}

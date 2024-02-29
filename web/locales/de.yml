@@ -1,0 +1,11 @@
+welcome: Willkommen zum Jasshaus
+settings: Einstellungen
+goto_home: Zur Startseite
+goto_game: Einer Partie beitreten
+goto_settings: Einstellungen
+
+settings/label/name: Ihr Name
+settings/label/click_cards: Karten klicken
+settings/label/cardskin: Kartentyp
+german: Deutsch
+french: Französisch
